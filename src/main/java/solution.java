@@ -18,7 +18,6 @@ public class solution {
     public static void main(String[] args) throws Exception {
 
         System.out.println("Please Wait . . .");
-        System.out.println();
         Map<String, Object> toJson = new HashMap<String, Object>();
 
         Document document = Jsoup.connect("https://cermati.com/karir").get();
@@ -55,7 +54,6 @@ public class solution {
             }
 
             toJson.put(teams, departments);
-            System.out.println("On progress : "+teams);
         }
 
         //Convert to json
