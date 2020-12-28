@@ -8,16 +8,6 @@ import org.jsoup.select.Elements;
 
 public class jsoupController {
 
-    // public jsoupController(String url) {
-    //     this.url = url;
-    // }
-
-    // public Elements getElementFromClass(String htmlElm) throws IOException {
-    //     Document doc = Jsoup.connect(this.url).get();
-    //     Elements elements = doc.select(htmlElm);
-    //     return elements;
-    // }
-
     public List<String> getArrayResult(Elements elements, String target){
         List<String> result = new ArrayList<String>();
         

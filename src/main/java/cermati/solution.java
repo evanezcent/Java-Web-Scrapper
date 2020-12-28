@@ -2,7 +2,9 @@ package cermati;
 
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,6 +24,7 @@ public class solution {
 
         System.out.println("Please Wait . . .");
         System.out.println();
+        Map<String, Object> toJson = new HashMap<String, Object>();
         List<Solution> solutions = new ArrayList<Solution>();
 
         Document document = Jsoup.connect("https://cermati.com/karir").get();
@@ -57,15 +60,16 @@ public class solution {
                 departments.add(department);
             }
             // Add department into list
-            Solution solution = new Solution();
-            solution.setDepartments(teams, departments);
-            solutions.add(solution);
+            // Solution solution = new Solution();
+            // solution.setDepartments(teams, departments);
+            // solutions.add(solution);
+            toJson.put(teams, departments);
 
             System.out.println("On progress : "+teams);
         }
 
         //Convert to json
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(Paths.get("solution.json").toFile(), solutions);
+        mapper.writeValue(Paths.get("solution.json").toFile(), toJson);
     }
 }
