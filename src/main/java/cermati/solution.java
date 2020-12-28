@@ -43,6 +43,7 @@ public class solution {
                 Elements jobDescription = doc.select("section#st-jobDescription");
                 Elements jobQualification = doc.select("section#st-qualifications");
                 
+                // Call controller that doing job for looping the "li"
                 jsoupController controller = new jsoupController();
                 List<String> jobDesc = controller.getArrayResult(jobDescription, "li");
                 List<String> jobQualify = controller.getArrayResult(jobQualification, "li");
@@ -56,15 +57,15 @@ public class solution {
                 departments.add(department);
             }
             // Add department into list
-            Solution solution = new Solution(teams, departments);
+            Solution solution = new Solution();
+            solution.setDepartments(teams, departments);
             solutions.add(solution);
 
-            System.out.println(solutions.get(solutions.size()-1).getDepartment());
+            System.out.println("On progress : "+teams);
         }
 
         //Convert to json
         ObjectMapper mapper = new ObjectMapper();
-        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-        writer.writeValue(Paths.get("solution.json").toFile(), solutions);
+        mapper.writeValue(Paths.get("solution.json").toFile(), solutions);
     }
 }

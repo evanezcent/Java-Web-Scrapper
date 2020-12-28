@@ -31,7 +31,7 @@ public class Department {
         return this.location;
     }
 
-    public String getPosted_By(){
+    public String getPosted_by(){
         return this.posted_by;
     }
 

@@ -1,26 +1,20 @@
 package models;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 
 public class Solution {
-    String departmentType;
-    List<Department> departments;
+    Map<String, Object> details = new LinkedHashMap<>();
 
-    public Solution(String department, List<Department> departments){
-        this.departmentType = department;
-        this.departments = departments;
+    @JsonAnySetter
+    public void setDepartments(String key, List<Department> departments){
+        this.details.put(key, departments);
     }
 
-    public void setDepartments(List<Department> departments){
-        this.departments = departments;
+    public Map<String, Object> getData() {
+        return this.details;
     }
-
-    public String getDepartment() {
-        return departmentType;
-    }
-
-    public List<Department> getPositionEachDepartment() {
-        return departments;
-    }
-
 }
